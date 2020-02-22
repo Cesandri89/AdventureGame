@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://TextAdventure.gd" type="Script" id=1]
+[ext_resource path="res://Arial.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFontData" id=4]
+font_path = "res://Arial.ttf"
+
+[sub_resource type="DynamicFont" id=5]
+size = 15
+font_data = SubResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 24
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Arial.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 25
+font_data = SubResource( 1 )
+
+[sub_resource type="ShortCut" id=3]
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+custom_constants/separation = 11
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 480.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 5 )
+text = "Adventure Game"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+margin_top = 29.0
+margin_right = 480.0
+margin_bottom = 328.0
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 6 )
+bbcode_enabled = true
+visible_characters = 100
+text = "dddsdkskdksdkskdksdskdks"
+custom_effects = [ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null ]
+
+[node name="Input" type="TextEdit" parent="VBoxContainer"]
+margin_top = 268.0
+margin_right = 480.0
+margin_bottom = 317.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 400.0
+margin_right = 480.0
+margin_bottom = 420.0
+custom_constants/separation = 5
+alignment = 1
+
+[node name="Cancel" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_right = 237.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/hseparation = 18
+shortcut = SubResource( 3 )
+text = "Cancel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Execute" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 242.0
+margin_right = 480.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/hseparation = 18
+text = "Enter"
+[connection signal="text_changed" from="VBoxContainer/Input" to="." method="_on_TextEdit_text_changed"]
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/Cancel" to="." method="_on_Cancel_button_down"]
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/Execute" to="." method="_on_Execute_button_down"]
